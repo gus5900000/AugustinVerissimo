@@ -8,7 +8,7 @@
 }
 
 .projet-right {
-  flex: 1; /* Prend l'espace disponible */
+  flex: 1;
 }
 
 .projet-right h1 {
@@ -18,10 +18,10 @@
 }
 
 .projet-right p {
-  color: #9ca3af; /* Gris clair pour le texte */
+  color: #9ca3af;
   font-size: 1.1rem;
   line-height: 1.6;
-  max-width: 600px; /* Limite la largeur du texte */
+  max-width: 600px;
 }
 
 .projet-left a {
@@ -29,10 +29,10 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(to right, #8b5cf6, #d946ef); /* Dégradé violet-rose */
+  background: linear-gradient(to right, #8b5cf6, #d946ef); 
   color: white;
   text-decoration: none;
-  border-radius: 100px; /* Coins très arrondis */
+  border-radius: 100px;
   font-size: 1rem;
   transition: all 0.3s ease;
 }
@@ -235,4 +235,72 @@ iframe {
   border: none;
   border-radius: 0.5rem;
   margin-top: 1rem;
+}
+
+
+@media screen and (max-width: 768px) {
+  .project-head {
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+  }
+
+  .projet-right h1 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+  }
+
+  .projet-right p {
+      font-size: 1rem;
+      max-width: 100%;
+  }
+
+  .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 1rem;
+  }
+
+  .project-card {
+      max-width: 100%;
+  }
+
+  .project-image img {
+      height: 180px;
+  }
+
+  .project-content {
+      padding: 1.25rem;
+  }
+
+  .project-content h3 {
+      font-size: 1.25rem;
+  }
+
+  .project-tags {
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+  }
+
+  .tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+  }
+
+  .project-content h2 {
+      font-size: 1.5rem;
+  }
+
+  .project-content h4 {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+  }
+
+  #projects-container {
+      padding: 1rem;
+  }
+
+  iframe {
+      height: 240px;
+  }
 }

@@ -28,6 +28,7 @@ class ProjectGallery {
     this.renderGallery();
   }
 
+
   parseMarkdownProject(content, filePath) {
     const metadataRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
     const match = content.match(metadataRegex);
@@ -89,10 +90,18 @@ class ProjectGallery {
     };
   }
 
+
   createProjectCard(project) {
     const article = document.createElement('article');
     article.className = 'project-card';
-    article.addEventListener('click', () => this.showProjectDetail(project.slug));
+    
+    // Vérifie si nous sommes sur la page index
+    const isIndexPage = window.location.pathname.includes('index.html');
+    
+    // Ajoute l'événement click seulement si nous ne sommes PAS sur la page index
+    if (!isIndexPage) {
+      article.addEventListener('click', () => this.showProjectDetail(project.slug));
+    }
     
     const projectImage = document.createElement('div');
     projectImage.className = 'project-image';
@@ -137,6 +146,7 @@ class ProjectGallery {
     article.appendChild(projectContent);
     return article;
   }
+
 
   async showProjectDetail(slug) {
     const project = this.projects.find(p => p.slug === slug);
@@ -215,9 +225,15 @@ class ProjectGallery {
     this.container.innerHTML = '';
     const grid = document.createElement('div');
     grid.className = 'projects-grid';
-    this.projects.forEach(project => {
+    
+    const isIndexPage = window.location.pathname.includes('index.html');
+    
+    const projectsToDisplay = isIndexPage ? this.projects.slice(0, 3) : this.projects;
+    
+    projectsToDisplay.forEach(project => {
       grid.appendChild(this.createProjectCard(project));
     });
+    
     this.container.appendChild(grid);
   }
 
@@ -246,6 +262,8 @@ class ProjectGallery {
       .replace(/(^-|-$)/g, '');
   }
 }
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = new ProjectGallery();

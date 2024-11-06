@@ -1,0 +1,252 @@
+body {
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: #fff;
+}
+
+.card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    color: #8b5cf6;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3a3a3a;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #e0e0e0;
+    font-size: 16px;
+}
+
+.tab.active {
+    border-bottom: 2px solid #9333ea;
+    color: #9333ea;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid #3a3a3a;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item h3 {
+    color: #8b5cf6;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #9333ea;
+    border: 2px solid #1a1a1a;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-right: 10px;
+}
+
+.skills {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.about-section {
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-header {
+    margin-bottom: 2rem;
+}
+
+.about-header h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.about-info {
+    background: #1a1a1a;
+    border-radius: 0.75rem;
+    padding: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.info-item svg {
+    width: 24px;
+    height: 24px;
+    filter: invert(37%) sepia(93%) saturate(7471%) hue-rotate(257deg) brightness(101%) contrast(101%);
+}
+
+.info-item span {
+    color: #ffffff;
+}
+
+.about-description {
+    background: #1a1a1a;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+    .grid-2-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .about-header h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .about-info,
+    .about-description,
+    .card {
+        padding: 1rem;
+    }
+
+    .about-section {
+        padding: 1rem;
+    }
+
+    .tabs {
+        flex-direction: column;
+        border-bottom: none;
+    }
+    
+    .tab {
+        margin-bottom: 5px;
+        padding: 12px 15px;
+        background-color: #2a2a2a;
+        border-radius: 6px;
+        position: relative;
+    }
+    
+    .tab.active {
+        background-color: #3a3a3a;
+        border-bottom: none;
+        color: #9333ea;
+    }
+    
+    .tab::after {
+        content: '›';
+        position: absolute;
+        right: 15px;
+        transition: transform 0.3s;
+    }
+    
+    .tab.active::after {
+        transform: rotate(90deg);
+    }
+
+    .skills {
+        gap: 5px;
+    }
+
+    .skill {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+
+    .timeline {
+        padding-left: 20px;
+    }
+
+    .timeline-item::before {
+        left: -26px;
+        width: 8px;
+        height: 8px;
+    }
+
+    .badge {
+        font-size: 0.7em;
+        padding: 3px 6px;
+        margin-right: 5px;
+    }
+}

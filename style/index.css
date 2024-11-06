@@ -35,19 +35,26 @@ header {
 .header-card {
     display: flex;
     align-items: center;
-    gap: 0.5rem; 
-    padding: 1rem;
-    background-color: #f5f5f5; 
-    border-radius: 100px; 
+    gap: 0.5rem;
+    padding: 1rem 1.5rem; 
+    background: #1a1a1a;
+    border-radius: 100px;
+    transition: transform 0.3s ease;
+    border: 1px solid #2a2a2a;
 }
 
-.header-card p{
-    color: #000;
+.header-card:hover {
+    transform: translateY(-2px);
+}
+
+.header-card p {
+    color: #fff; 
 }
 
 .header-card img {
-    width: 24px; 
+    width: 24px;
     height: 24px;
+    filter: invert(37%) sepia(93%) saturate(7471%) hue-rotate(257deg) brightness(101%) contrast(101%);
 }
 
 .header-profil {
@@ -67,10 +74,7 @@ header {
     0px 16px 10px rgba(82, 82, 91, 0.03),
     0px 7px 7px rgba(82, 82, 91, 0.05),  
     0px 2px 4px rgba(82, 82, 91, 0.06);  
-
 }
-
-
 
 section {
     display: flex;
@@ -138,7 +142,7 @@ main {
 }
 
 .projet-right {
-    flex: 1; /* Prend l'espace disponible */
+    flex: 1;
 }
 
 .projet-right h1 {
@@ -148,10 +152,10 @@ main {
 }
 
 .projet-right p {
-    color: #9ca3af; /* Gris clair pour le texte */
+    color: #9ca3af;
     font-size: 1.1rem;
     line-height: 1.6;
-    max-width: 600px; /* Limite la largeur du texte */
+    max-width: 600px;
 }
 
 .projet-left a {
@@ -159,10 +163,10 @@ main {
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(to right, #8b5cf6, #d946ef); /* Dégradé violet-rose */
+    background: linear-gradient(to right, #8b5cf6, #d946ef);
     color: white;
     text-decoration: none;
-    border-radius: 100px; /* Coins très arrondis */
+    border-radius: 100px;
     font-size: 1rem;
     transition: all 0.3s ease;
 }
@@ -182,7 +186,6 @@ main {
     transform: translateX(5px);
 }
 
-
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -191,8 +194,6 @@ main {
     justify-content: center;
     margin: auto;
     max-width: 1200px; 
-    pointer-events: none;
-
 }
 
 .project-card {
@@ -247,8 +248,6 @@ time {
     font-size: 0.875rem;
 }
 
-
-
 .contact {
     display: flex;
     justify-content: space-between;
@@ -285,16 +284,119 @@ time {
 }
 
 .contact-left a:hover {
-transform: translateY(-2px);
-box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 .contact-left svg {
-width: 20px;
-height: 20px;
-transition: transform 0.3s ease; 
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease; 
 }
 
 .contact-left a:hover svg {
-transform: translateX(5px); 
+    transform: translateX(5px); 
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        margin: 2rem 1rem;
+        text-align: center;
+    }
+
+    .header-text h1 {
+        font-size: 3rem;
+        max-width: 100%;
+    }
+
+    .header-text p {
+        font-size: 1.2rem;
+        max-width: 100%;
+    }
+
+    .header-role {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .header-profil {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    section {
+        flex-direction: column;
+        margin: 2rem 1rem;
+        padding: 1rem;
+    }
+
+    .project-head {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .projet-right h1 {
+        font-size: 2rem;
+    }
+
+    .projet-right p {
+        font-size: 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .contact {
+        flex-direction: column;
+        text-align: center;
+        margin: 2rem 1rem;
+    }
+
+    .contact-right h1 {
+        font-size: 2rem;
+        max-width: 100%;
+    }
+
+    .contact-left a {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .header-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-card {
+        padding: 0.75rem 1rem;
+    }
+
+    .header-card p {
+        font-size: 0.9rem;
+    }
+
+    .project-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .qualite {
+        padding: 1rem;
+    }
+
+    .qualite-name h1 {
+        font-size: 1.2rem;
+    }
+
+    .qualite-desc {
+        font-size: 0.85rem;
+    }
 }

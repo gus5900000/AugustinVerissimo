@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coucou</title>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/about.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,12 +18,15 @@
     <nav>
         <div class="nav-name">
             <img src="../asset/icon/terminal.svg" alt="Terminal Icon">
-            <h1>Augustin Verissimo</h1>
+            <a href="../pages/index.html">
+                <h1>Augustin Verissimo</h1>
+            </a>
+
         </div>
-        <div class="nav-item">
-            <a href="../pages/index.html">Home</a>
-            <a href="../pages/projects.html">Projet</a>
-            <a href="../pages/about.html">À propos</a>
+        <div class="nav-item" id="nav-item">
+            <a href="../pages/index.html" class="nav-link">Home</a>
+            <a href="../pages/projects.html" class="nav-link">Projet</a>
+            <a href="../pages/about.html" class="nav-link">À propos</a>
         </div>
         <div class="nav-social">
             <a href="#">
@@ -33,23 +37,132 @@
             </a>
         </div>
     </nav>
-    
-    <main>
+    <div class="container">
+        <header>
+            <section class="about-section">
+                <div class="about-header">
+                    <h1>À propos de moi</h1>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-info">
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span>Développeur Full Stack Senior</span>
+                        </div>
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>contact@augustin-verissimo.fr</span>
+                        </div>
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Paris, France</span>
+                        </div>
+                    </div>
+
+                    <div class="about-description">
+                        <p>Passionné par le développement web et les nouvelles technologies, je crée des solutions
+                            innovantes et performantes. Mon expertise couvre l'ensemble de la stack technique, du
+                            front-end
+                            au back-end.</p>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="parcours">Parcours professionnel</button>
+            <button class="tab" data-tab="etudes">Études</button>
+            <button class="tab" data-tab="competences">Compétences</button>
+        </div>
+
+        <div id="parcours" class="tab-content active">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="badge">2023</span>
+                    <h3>Développeur Full Stack Senior</h3>
+                    <p>Développement d'applications web complexes, leadership technique, architecture de solutions,
+                        mentorat d'équipe.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="badge">Août 2021</span>
+                    <h3>Intérim</h3>
+                    <p>Missions diverses, adaptabilité, travail en équipe.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="badge">Nov.2023 - Nov.2023</span>
+                    <h3>Préparateur de commande</h3>
+                    <p>Gestion logistique, organisation, rigueur.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="etudes" class="tab-content">
+            <div class="card">
+                <h3>Formation Développeur Web</h3>
+                <p>Formation intensive en développement web full stack, couvrant les technologies modernes et les bonnes
+                    pratiques.</p>
+                <p><small>2020 - 2021</small></p>
+            </div>
+        </div>
+
+        <div id="competences" class="tab-content">
+            <div class="grid grid-2-cols">
+                <div class="card">
+                    <h3>Technologies</h3>
+                    <div class="skills">
+                        <span class="skill">React</span>
+                        <span class="skill">Node.js</span>
+                        <span class="skill">TypeScript</span>
+                        <span class="skill">Next.js</span>
+                        <span class="skill">SQL</span>
+                        <span class="skill">Git</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Soft Skills</h3>
+                    <div class="skills">
+                        <span class="skill">Leadership</span>
+                        <span class="skill">Communication</span>
+                        <span class="skill">Problem Solving</span>
+                        <span class="skill">Team Work</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-text">
-              Designed & Developed by <a href="https://github.com/gus5900000" class="footer-link" target="_blank">Augustin Verissimo</a>
+                Designed & Developed by <a href="https://github.com/gus5900000" class="footer-link"
+                    target="_blank">Augustin Verissimo</a>
             </div>
             <div class="footer-copyright">
-              &copy; 2024 Augustin Verissimo
+                &copy; 2024 Augustin Verissimo
             </div>
-          </div>
+        </div>
     </footer>
 
-    <script src="script/script.js"></script>
+
+
+    <script src="../script/about.js"></script>
+    <script src="../script/script.js"></script>
 </body>
 
 </html>
