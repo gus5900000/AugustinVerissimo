@@ -97,7 +97,7 @@ class ProjectGallery {
     
     // Vérifie si nous sommes sur la page index
     const isIndexPage = window.location.pathname.includes('index.html');
-    
+    console.log(window.location.pathname);
     // Ajoute l'événement click seulement si nous ne sommes PAS sur la page index
     if (!isIndexPage) {
       article.addEventListener('click', () => this.showProjectDetail(project.slug));
