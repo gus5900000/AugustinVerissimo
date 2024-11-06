@@ -268,10 +268,10 @@ class ProjectGallery {
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = new ProjectGallery();
   const projectFiles = [
-    './project/AFP.md',
-    './project/AFPExtented.md',
-    './project/space-invader.md',
-    './project/snake_IA.md'
+    '../project/AFP.md',
+    '../project/AFPExtented.md',
+    '../project/space-invader.md',
+    '../project/snake_IA.md'
   ];
   gallery.loadProjects(projectFiles);
 });
