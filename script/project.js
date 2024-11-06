@@ -214,12 +214,6 @@ class ProjectGallery {
     this.currentView = 'detail';
   }
 
-  showGallery() {
-    history.pushState(null, '', '/project');
-    this.renderGallery();
-    this.currentView = 'gallery';
-  }
-
   renderGallery() {
     this.container.innerHTML = '';
     const grid = document.createElement('div');
@@ -236,6 +230,12 @@ class ProjectGallery {
     this.container.appendChild(grid);
   }
 
+  showGallery() {
+    history.pushState(null, '', '/project');
+    this.renderGallery();
+    this.currentView = 'gallery';
+  }
+  
   handleNavigation(event) {
     if (event.state && event.state.slug) {
       this.showProjectDetail(event.state.slug);
