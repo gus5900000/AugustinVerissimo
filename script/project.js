@@ -96,7 +96,7 @@ class ProjectGallery {
     article.className = 'project-card';
     
     // Vérifie si nous sommes sur la page index
-    const isIndexPage = window.location.pathname.includes('index.html');
+    const isIndexPage = window.location.pathname.includes('/');
     console.log(window.location.pathname);
     // Ajoute l'événement click seulement si nous ne sommes PAS sur la page index
     if (!isIndexPage) {
