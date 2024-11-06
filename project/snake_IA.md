@@ -3,7 +3,7 @@ title: Snake
 publishDate: 2023-01-03 23:40:00
 img: ./asset/project/stock-4.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
-description: J'ai recodé le célèbre jeu Space Invaders en Python à partir de zéro !
+description: Un snake qui utilise l'IA pour jouer !
 tags:
   - Jeux
   - IA
