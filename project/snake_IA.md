@@ -1,7 +1,7 @@
 ---
 title: Snake
 publishDate: 2023-01-03 23:40:00
-img: ./asset/project/stock-3.jpg
+img: ./asset/project/stock-4.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: J'ai recodé le célèbre jeu Space Invaders en Python à partir de zéro !
 tags:
@@ -42,4 +42,4 @@ Le projet est structuré autour de plusieurs classes principales :
 Voici un aperçu du jeu et le repo du code [GitHub](https://github.com/gus5900000/Snake-IA)
 
 
-![Snake Gif](/assets/snake.gif)
+![Snake Gif](./asset/project/snake.gif)

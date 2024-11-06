@@ -152,7 +152,7 @@ class ProjectGallery {
     const project = this.projects.find(p => p.slug === slug);
     if (!project) return;
 
-    history.pushState({ slug }, '', `/project/${slug}`);
+    history.pushState({ slug }, '', `${slug}`);
     
     if (!window.marked) {
       await this.loadMarked();
@@ -271,7 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
     '../project/AFP.md',
     '../project/AFPExtented.md',
     '../project/space-invader.md',
-    '../project/snake_IA.md'
+    '../project/snake_IA.md',
+    '../project/toolbox.md'
   ];
   gallery.loadProjects(projectFiles);
 });

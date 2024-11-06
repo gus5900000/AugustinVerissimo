@@ -32,7 +32,7 @@ L'application contient les fonctionnalités suivantes :
 
 #### Aperçu
 
-![Space Invader Gif](/assets/spaceinvader.gif)
+![Space Invader Gif](./asset/project/spaceinvader.gif)
 
 #### Code Source
 
