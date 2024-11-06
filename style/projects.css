@@ -267,71 +267,81 @@ iframe {
 
 @media screen and (max-width: 768px) {
   .project-head {
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .projet-right h1 {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
   }
 
   .projet-right p {
-      font-size: 1rem;
-      max-width: 100%;
+    font-size: 1rem;
+    max-width: 100%;
   }
 
   .projects-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      padding: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
   }
 
   .project-card {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .project-image img {
-      height: 180px;
+    height: 180px;
   }
 
   .project-content {
-      padding: 1.25rem;
+    padding: 1.25rem;
   }
 
   .project-content h3 {
-      font-size: 1.25rem;
+    font-size: 1.25rem;
   }
 
   .project-tags {
-      gap: 0.35rem;
-      margin-bottom: 0.75rem;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
   }
 
   .tag {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
   }
 
   .project-content h2 {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 
   .project-content h4 {
-      font-size: 1.1rem;
-      margin-top: 1.5rem;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
   }
 
   #projects-container {
-      padding: 1rem;
+    padding: 1rem;
   }
 
   iframe {
-      height: 240px;
+    height: 240px;
+  }
+  .project-content img {
+    height: 364px;
+    width: 364px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   header {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     padding: 1.5rem 0;
   }
 
