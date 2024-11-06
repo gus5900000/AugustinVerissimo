@@ -225,7 +225,7 @@ class ProjectGallery {
     const grid = document.createElement('div');
     grid.className = 'projects-grid';
     
-    const isIndexPage = window.location.pathname.includes('/');
+    const isIndexPage = window.location.pathname.includes('index.html');
     
     const projectsToDisplay = isIndexPage ? this.projects.slice(0, 3) : this.projects;
     
