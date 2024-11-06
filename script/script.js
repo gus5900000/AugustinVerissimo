@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',
         const navItems = document.querySelectorAll('.nav-link')
 
         navItems.forEach(item => {
-            if (item.getAttribute('href') === `../pages/${currentPage}`) {
+            if (item.getAttribute('href') === `${currentPage}`) {
                 item.classList.add('active');
             }
         });
