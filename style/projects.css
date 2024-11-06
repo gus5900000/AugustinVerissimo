@@ -331,8 +331,8 @@ iframe {
     height: 240px;
   }
   .project-content img {
-    height: 364px;
-    width: 364px;
+    height: auto;
+    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
