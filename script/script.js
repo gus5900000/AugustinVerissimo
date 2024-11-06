@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     navItems.forEach(item => {
         if (currentPage === "" || currentPage === "/") {
-            if (item.getAttribute('href') === "home") {
+            if (item.getAttribute('href') === "/") {
                 item.classList.add('active');
             }
         } else if (item.getAttribute('href') === `${currentPage}`) {
