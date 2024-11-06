@@ -1,7 +1,7 @@
 ---
 title: Space Invader
 publishDate: 2024-01-01 16:00:00
-img: ../asset/project/stock-1.jpg
+img: /asset/project/stock-1.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: J'ai recodé le célèbre jeu Space Invaders en Python à partir de zéro !
 tags:
