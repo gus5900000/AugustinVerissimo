@@ -97,7 +97,6 @@ class ProjectGallery {
     
     // Vérifie si nous sommes sur la page index
     const isIndexPage = window.location.pathname.includes('/');
-    console.log(window.location.pathname);
     // Ajoute l'événement click seulement si nous ne sommes PAS sur la page index
     if (!isIndexPage) {
       article.addEventListener('click', () => this.showProjectDetail(project.slug));
@@ -226,7 +225,7 @@ class ProjectGallery {
     const grid = document.createElement('div');
     grid.className = 'projects-grid';
     
-    const isIndexPage = window.location.pathname.includes('index.html');
+    const isIndexPage = window.location.pathname.includes('/');
     
     const projectsToDisplay = isIndexPage ? this.projects.slice(0, 3) : this.projects;
     
