@@ -1,7 +1,7 @@
 ---
 title: NetNinja
 publishDate: 2024-03-07 23:40:00
-img: /asset/portrait.jpg
+img: ./asset/portrait.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description:  Prototype d’application iOS, ce projet a été réalisé pendant la formation programme Apple Foundation !
 tags:
