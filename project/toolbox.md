@@ -1,6 +1,6 @@
 ---
 title: Toolbox
-publishDate: 2024-01-22 1:00:00
+publishDate: 2024-02-07 1:00:00
 img: ./asset/project/stock-2.jpg
 img_alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
 description: J'ai créé une toolbox qui permet de traduire et de corriger des phrases, ainsi qu'un système de raccourcis qui ouvre des fichiers

@@ -1,6 +1,6 @@
 ---
 title: AINAO
-publishDate: 2024-03-09 23:40:00
+publishDate: 2024-07-04 23:40:00
 img: ./asset/project/stock-3.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: Prototype d’application iOS, ce projet a été réalisé pendant la formation programme Apple Foundation Extented !
