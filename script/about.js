@@ -14,3 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function ouvrirCV() {
+    window.open("../asset/cv/Augustin_Verissimo_CV.pdf", '_blank');
+}
