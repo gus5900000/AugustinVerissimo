@@ -152,6 +152,17 @@ h1, h2, h3 {
     filter: invert(37%) sepia(93%) saturate(7471%) hue-rotate(257deg) brightness(101%) contrast(101%);
 }
 
+.info-item img {
+    width: 24px;
+    height: 24px;
+    filter: invert(37%) sepia(93%) saturate(7471%) hue-rotate(257deg) brightness(101%) contrast(101%);
+}
+
+.cv {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .info-item span {
     color: #ffffff;
 }
