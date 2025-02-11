@@ -1,3 +1,65 @@
+class Project {
+  constructor({ title, content, filePath, slug, img, img_alt, description, tags, publishDate }) {
+    this.title = title;
+    this.content = content;
+    this.filePath = filePath;
+    this.slug = slug;
+    this.img = img;
+    this.img_alt = img_alt;
+    this.description = description;
+    this.tags = tags;
+    this.publishDate = publishDate;
+  }
+
+  createElement() {
+    const article = document.createElement('article');
+    article.className = 'project-card';
+
+    const projectImage = document.createElement('div');
+    projectImage.className = 'project-image';
+    const img = document.createElement('img');
+    img.src = this.img || '/placeholder-image.jpg';
+    img.alt = this.img_alt || this.title;
+    projectImage.appendChild(img);
+    article.appendChild(projectImage);
+
+    const projectContent = document.createElement('div');
+    projectContent.className = 'project-content';
+
+    const title = document.createElement('h3');
+    title.textContent = this.title;
+    projectContent.appendChild(title);
+
+    if (this.description) {
+      const description = document.createElement('p');
+      description.textContent = this.description;
+      projectContent.appendChild(description);
+    }
+
+    if (this.tags && Array.isArray(this.tags) && this.tags.length > 0) {
+      const projectTags = document.createElement('div');
+      projectTags.className = 'project-tags';
+      this.tags.forEach(tag => {
+        const tagSpan = document.createElement('span');
+        tagSpan.className = 'tag';
+        tagSpan.textContent = tag;
+        projectTags.appendChild(tagSpan);
+      });
+      projectContent.appendChild(projectTags);
+    }
+
+    if (this.publishDate) {
+      const publishDate = document.createElement('time');
+      publishDate.dateTime = this.publishDate;
+      publishDate.textContent = new Date(this.publishDate).toLocaleDateString();
+      projectContent.appendChild(publishDate);
+    }
+
+    article.appendChild(projectContent);
+    return article;
+  }
+}
+
 class ProjectGallery {
   constructor(containerId = 'projects-container') {
     this.container = document.getElementById(containerId);
@@ -13,130 +75,28 @@ class ProjectGallery {
   }
 
   async loadProjects(projectFiles) {
-    this.projects = [];
-    for (const file of projectFiles) {
-      try {
-        const response = await fetch(file);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const content = await response.text();
-        const project = this.parseMarkdownProject(content, file);
-        this.projects.push(project);
-      } catch (error) {
-        console.error(`Erreur lors du chargement de ${file}:`, error);
-      }
-    }
+    const loader = new MarkdownLoader();
+    this.projects = await loader.loadProjects(projectFiles);
     this.renderGallery();
   }
 
-  parseMarkdownProject(content, filePath) {
-    const metadataRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-    const match = content.match(metadataRegex);
-    
-    if (!match) {
-      return { 
-        title: filePath.split('/').pop().replace('.md', ''),
-        content,
-        filePath,
-        slug: this.createSlug(filePath.split('/').pop().replace('.md', ''))
-      };
-    }
+  renderGallery() {
+    this.container.innerHTML = '';
+    const grid = document.createElement('div');
+    grid.className = 'projects-grid';
 
-    const metadataStr = match[1];
-    const contentStr = match[2];
-    
-    const metadata = {};
-    const lines = metadataStr.split('\n');
-    let currentKey = null;
-    
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-      if (!line) continue;
-
-      if (line.startsWith('-') && lines[i].startsWith('  ')) {
-        const value = line.substring(1).trim();
-        if (currentKey && value) {
-          if (!Array.isArray(metadata[currentKey])) {
-            metadata[currentKey] = [];
-          }
-          metadata[currentKey].push(value);
-        }
-        continue;
-      }
-
-      const colonIndex = line.indexOf(':');
-      if (colonIndex !== -1) {
-        currentKey = line.substring(0, colonIndex).trim();
-        const value = line.substring(colonIndex + 1).trim();
-        metadata[currentKey] = value || [];
-      }
-    }
-
-    if (metadata.publishDate) {
-      metadata.publishDate = metadata.publishDate.replace(/["']/g, '');
-    }
-
-    return {
-      ...metadata,
-      content: contentStr,
-      filePath,
-      slug: this.createSlug(metadata.title || filePath.split('/').pop().replace('.md', ''))
-    };
-  }
-
-  createProjectCard(project) {
-    const article = document.createElement('article');
-    article.className = 'project-card';
-
-    // Vérifie si nous sommes sur la page racine
     const isRootPage = window.location.pathname === '/';
-    
-    // Ne permet pas d'interagir avec les projets si on est sur la page racine
-    if (!isRootPage) {
-      article.addEventListener('click', () => this.showProjectDetail(project.slug));
-    }
+    const projectsToDisplay = isRootPage ? this.projects.slice(0, 3) : this.projects;
 
-    const projectImage = document.createElement('div');
-    projectImage.className = 'project-image';
-    const img = document.createElement('img');
-    img.src = project.img || '/placeholder-image.jpg';
-    img.alt = project.img_alt || project.title;
-    projectImage.appendChild(img);
-    article.appendChild(projectImage);
+    projectsToDisplay.forEach(project => {
+      const card = project.createElement();
+      if (!isRootPage) {
+        card.addEventListener('click', () => this.showProjectDetail(project.slug));
+      }
+      grid.appendChild(card);
+    });
 
-    const projectContent = document.createElement('div');
-    projectContent.className = 'project-content';
-
-    const title = document.createElement('h3');
-    title.textContent = project.title;
-    projectContent.appendChild(title);
-
-    if (project.description) {
-      const description = document.createElement('p');
-      description.textContent = project.description;
-      projectContent.appendChild(description);
-    }
-
-    if (project.tags && Array.isArray(project.tags) && project.tags.length > 0) {
-      const projectTags = document.createElement('div');
-      projectTags.className = 'project-tags';
-      project.tags.forEach(tag => {
-        const tagSpan = document.createElement('span');
-        tagSpan.className = 'tag';
-        tagSpan.textContent = tag;
-        projectTags.appendChild(tagSpan);
-      });
-      projectContent.appendChild(projectTags);
-    }
-
-    if (project.publishDate) {
-      const publishDate = document.createElement('time');
-      publishDate.dateTime = project.publishDate;
-      publishDate.textContent = new Date(project.publishDate).toLocaleDateString();
-      projectContent.appendChild(publishDate);
-    }
-
-    article.appendChild(projectContent);
-    return article;
+    this.container.appendChild(grid);
   }
 
   async showProjectDetail(slug) {
@@ -144,13 +104,13 @@ class ProjectGallery {
     if (!project) return;
 
     history.pushState({ slug }, '', `${slug}`);
-    
+
     if (!window.marked) {
       await this.loadMarked();
     }
 
     this.container.innerHTML = '';
-    
+
     const projectHead = document.createElement('div');
     projectHead.className = 'project-head';
 
@@ -212,23 +172,6 @@ class ProjectGallery {
     this.currentView = 'gallery';
   }
 
-  renderGallery() {
-    this.container.innerHTML = '';
-    const grid = document.createElement('div');
-    grid.className = 'projects-grid';
-    
-    // Vérifie si nous sommes sur la page racine
-    const isRootPage = window.location.pathname === '/';
-    
-    const projectsToDisplay = isRootPage ? this.projects.slice(0, 3) : this.projects;
-    
-    projectsToDisplay.forEach(project => {
-      grid.appendChild(this.createProjectCard(project));
-    });
-    
-    this.container.appendChild(grid);
-  }
-
   handleNavigation(event) {
     if (event.state && event.state.slug) {
       this.showProjectDetail(event.state.slug);
@@ -246,6 +189,79 @@ class ProjectGallery {
       document.head.appendChild(script);
     });
   }
+}
+
+class MarkdownLoader {
+  async loadProjects(projectFiles) {
+    const projects = [];
+    for (const file of projectFiles) {
+      try {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const content = await response.text();
+        const projectData = this.parseMarkdownProject(content, file);
+        projects.push(new Project(projectData));
+      } catch (error) {
+        console.error(`Erreur lors du chargement de ${file}:`, error);
+      }
+    }
+    return projects;
+  }
+
+  parseMarkdownProject(content, filePath) {
+    const metadataRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+    const match = content.match(metadataRegex);
+
+    if (!match) {
+      return {
+        title: filePath.split('/').pop().replace('.md', ''),
+        content,
+        filePath,
+        slug: this.createSlug(filePath.split('/').pop().replace('.md', ''))
+      };
+    }
+
+    const metadataStr = match[1];
+    const contentStr = match[2];
+
+    const metadata = {};
+    const lines = metadataStr.split('\n');
+    let currentKey = null;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
+
+      if (line.startsWith('-') && lines[i].startsWith('  ')) {
+        const value = line.substring(1).trim();
+        if (currentKey && value) {
+          if (!Array.isArray(metadata[currentKey])) {
+            metadata[currentKey] = [];
+          }
+          metadata[currentKey].push(value);
+        }
+        continue;
+      }
+
+      const colonIndex = line.indexOf(':');
+      if (colonIndex !== -1) {
+        currentKey = line.substring(0, colonIndex).trim();
+        const value = line.substring(colonIndex + 1).trim();
+        metadata[currentKey] = value || [];
+      }
+    }
+
+    if (metadata.publishDate) {
+      metadata.publishDate = metadata.publishDate.replace(/["']/g, '');
+    }
+
+    return {
+      ...metadata,
+      content: contentStr,
+      filePath,
+      slug: this.createSlug(metadata.title || filePath.split('/').pop().replace('.md', ''))
+    };
+  }
 
   createSlug(title) {
     return title
@@ -254,9 +270,6 @@ class ProjectGallery {
       .replace(/^-+|-+$/g, '');
   }
 }
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = new ProjectGallery();
@@ -269,4 +282,3 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
   gallery.loadProjects(projectFiles);
 });
-
