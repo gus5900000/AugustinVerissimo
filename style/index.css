@@ -121,7 +121,7 @@ section {
 }
 
 .qualite-desc {
-    color: #9ca3af;
+    color: #b4b4b4;
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -204,6 +204,7 @@ main {
 
 .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
 }
 
 .project-image img {

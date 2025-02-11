@@ -98,7 +98,8 @@ header {
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
 }
 
 .project-image img {
