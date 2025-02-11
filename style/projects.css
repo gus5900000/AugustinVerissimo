@@ -256,6 +256,42 @@ time {
   color: #8b5cf6;
 }
 
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #3a3a3a;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #e0e0e0;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.filter-button.active {
+  border-bottom: 2px solid #9333ea;
+  color: #9333ea;
+}
+
+.filter-button::after {
+  content: '>';
+  position: absolute;
+  right: 0px;
+  transition: transform 0.3s;
+}
+
+.filter-button.active::after {
+  transform: rotate(90deg);
+}
+
+
 iframe {
   width: 100%;
   max-width: 560px;
@@ -365,4 +401,25 @@ iframe {
     font-size: 0.875rem;
     padding: 0.375rem 0.75rem;
   }
+  .filters {
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  .filter-button {
+    margin: 5px;
+    padding: 12px 15px;
+    background-color: #2a2a2a;
+    border-radius: 6px;
+  }
+
+  .filter-button.active {
+    background-color: #3a3a3a;
+    border-bottom: none;
+  }
+  .filter-button::after {
+    right: 10px;
+  }
+
+  
 }

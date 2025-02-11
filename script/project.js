@@ -1,5 +1,5 @@
 class Project {
-  constructor({ title, content, filePath, slug, img, img_alt, description, tags, publishDate }) {
+  constructor({ title, content, filePath, slug, img, img_alt, description, tags, publishDate, category }) {
     this.title = title;
     this.content = content;
     this.filePath = filePath;
@@ -9,6 +9,7 @@ class Project {
     this.description = description;
     this.tags = tags;
     this.publishDate = publishDate;
+    this.category = category;
   }
 
   createElement() {
@@ -70,8 +71,14 @@ class ProjectGallery {
     }
     this.currentView = 'gallery';
     this.projects = [];
+    this.currentCategory = 'all';
 
     window.addEventListener('popstate', (e) => this.handleNavigation(e));
+
+    // Ajouter un gestionnaire d'événements pour les boutons de filtrage
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.addEventListener('click', () => this.filterProjects(button.dataset.category));
+    });
   }
 
   async loadProjects(projectFiles) {
@@ -80,14 +87,25 @@ class ProjectGallery {
     this.renderGallery();
   }
 
+  filterProjects(category) {
+    this.currentCategory = category;
+    this.renderGallery();
+    // Mettre à jour l'apparence des boutons
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.classList.toggle('active', button.dataset.category === category);
+    });
+  }
+  
   renderGallery() {
     this.container.innerHTML = '';
     const grid = document.createElement('div');
     grid.className = 'projects-grid';
-
+  
     const isRootPage = window.location.pathname === '/';
-    const projectsToDisplay = isRootPage ? this.projects.slice(0, 3) : this.projects;
-
+    const projectsToDisplay = this.projects.filter(project =>
+      this.currentCategory === 'all' || project.category === this.currentCategory
+    );
+  
     projectsToDisplay.forEach(project => {
       const card = project.createElement();
       if (!isRootPage) {
@@ -95,9 +113,11 @@ class ProjectGallery {
       }
       grid.appendChild(card);
     });
-
+  
     this.container.appendChild(grid);
   }
+  
+
 
   async showProjectDetail(slug) {
     const project = this.projects.find(p => p.slug === slug);
@@ -211,7 +231,7 @@ class MarkdownLoader {
   parseMarkdownProject(content, filePath) {
     const metadataRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
     const match = content.match(metadataRegex);
-
+  
     if (!match) {
       return {
         title: filePath.split('/').pop().replace('.md', ''),
@@ -220,18 +240,18 @@ class MarkdownLoader {
         slug: this.createSlug(filePath.split('/').pop().replace('.md', ''))
       };
     }
-
+  
     const metadataStr = match[1];
     const contentStr = match[2];
-
+  
     const metadata = {};
     const lines = metadataStr.split('\n');
     let currentKey = null;
-
+  
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
       if (!line) continue;
-
+  
       if (line.startsWith('-') && lines[i].startsWith('  ')) {
         const value = line.substring(1).trim();
         if (currentKey && value) {
@@ -242,7 +262,7 @@ class MarkdownLoader {
         }
         continue;
       }
-
+  
       const colonIndex = line.indexOf(':');
       if (colonIndex !== -1) {
         currentKey = line.substring(0, colonIndex).trim();
@@ -250,11 +270,14 @@ class MarkdownLoader {
         metadata[currentKey] = value || [];
       }
     }
-
+  
     if (metadata.publishDate) {
       metadata.publishDate = metadata.publishDate.replace(/["']/g, '');
     }
-
+  
+    // Ajoutez la catégorie en fonction des tags
+    metadata.category = metadata.tags?.includes('Epitech') ? 'epitech' : 'personnel';
+  
     return {
       ...metadata,
       content: contentStr,
@@ -262,6 +285,7 @@ class MarkdownLoader {
       slug: this.createSlug(metadata.title || filePath.split('/').pop().replace('.md', ''))
     };
   }
+  
 
   createSlug(title) {
     return title
@@ -274,6 +298,8 @@ class MarkdownLoader {
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = new ProjectGallery();
   const projectFiles = [
+    './project/luvio.md',
+    './project/my_cinema.md',
     './project/AFPExtented.md',
     './project/AFP.md',
     './project/snake_IA.md',
