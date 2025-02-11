@@ -95,29 +95,29 @@ class ProjectGallery {
       button.classList.toggle('active', button.dataset.category === category);
     });
   }
-  
+
   renderGallery() {
     this.container.innerHTML = '';
     const grid = document.createElement('div');
     grid.className = 'projects-grid';
-  
+
     const isRootPage = window.location.pathname === '/';
     const projectsToDisplay = this.projects.filter(project =>
       this.currentCategory === 'all' || project.category === this.currentCategory
     );
-  
-    projectsToDisplay.forEach(project => {
+
+    const limitedProjects = isRootPage ? projectsToDisplay.slice(0, 3) : projectsToDisplay;
+
+    limitedProjects.forEach(project => {
       const card = project.createElement();
       if (!isRootPage) {
         card.addEventListener('click', () => this.showProjectDetail(project.slug));
       }
       grid.appendChild(card);
     });
-  
+
     this.container.appendChild(grid);
   }
-  
-
 
   async showProjectDetail(slug) {
     const project = this.projects.find(p => p.slug === slug);
@@ -231,7 +231,7 @@ class MarkdownLoader {
   parseMarkdownProject(content, filePath) {
     const metadataRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
     const match = content.match(metadataRegex);
-  
+
     if (!match) {
       return {
         title: filePath.split('/').pop().replace('.md', ''),
@@ -240,18 +240,18 @@ class MarkdownLoader {
         slug: this.createSlug(filePath.split('/').pop().replace('.md', ''))
       };
     }
-  
+
     const metadataStr = match[1];
     const contentStr = match[2];
-  
+
     const metadata = {};
     const lines = metadataStr.split('\n');
     let currentKey = null;
-  
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
       if (!line) continue;
-  
+
       if (line.startsWith('-') && lines[i].startsWith('  ')) {
         const value = line.substring(1).trim();
         if (currentKey && value) {
@@ -262,7 +262,7 @@ class MarkdownLoader {
         }
         continue;
       }
-  
+
       const colonIndex = line.indexOf(':');
       if (colonIndex !== -1) {
         currentKey = line.substring(0, colonIndex).trim();
@@ -270,14 +270,14 @@ class MarkdownLoader {
         metadata[currentKey] = value || [];
       }
     }
-  
+
     if (metadata.publishDate) {
       metadata.publishDate = metadata.publishDate.replace(/["']/g, '');
     }
-  
+
     // Ajoutez la catégorie en fonction des tags
     metadata.category = metadata.tags?.includes('Epitech') ? 'epitech' : 'personnel';
-  
+
     return {
       ...metadata,
       content: contentStr,
@@ -285,7 +285,6 @@ class MarkdownLoader {
       slug: this.createSlug(metadata.title || filePath.split('/').pop().replace('.md', ''))
     };
   }
-  
 
   createSlug(title) {
     return title
