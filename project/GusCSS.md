@@ -40,4 +40,4 @@ L'application contient les fonctionnalités suivantes :
 
 #### Aperçu
 
-[Voir la documentation](https://gus-css.vercel.app/home.html)
+[Voir la documentation](https://gus-css.vercel.app/home.html) - Consultez la documentation complète avec exemples de code, guide d'utilisation et démonstrations interactives des composants.
