@@ -110,7 +110,12 @@ class ProjectGallery {
 
     limitedProjects.forEach(project => {
       const card = project.createElement();
-      if (!isRootPage) {
+      if (isRootPage) {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+          window.location.href = 'projects.html';
+        });
+      } else {
         card.addEventListener('click', () => this.showProjectDetail(project.slug));
       }
       grid.appendChild(card);
@@ -297,13 +302,12 @@ class MarkdownLoader {
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = new ProjectGallery();
   const projectFiles = [
+    './project/epigusto.md',
     './project/GusCSS.md',
     './project/luvio.md',
-    './project/my_cinema.md',
-    './project/AFPExtented.md',
-    './project/AFP.md',
-    './project/snake_IA.md',
-    './project/toolbox.md',
+    './project/cinescope.md',
+    './project/ainao.md',
+    './project/netninja.md',
     './project/space-invader.md'
   ];
   gallery.loadProjects(projectFiles);
