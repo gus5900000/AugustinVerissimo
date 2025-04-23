@@ -40,6 +40,6 @@ L'application propose plusieurs fonctionnalités essentielles :
 
 ### Aperçu
 
-Retrouvez le code source et la documentation sur [GitHub]().  
+Retrouvez le code source et la documentation sur [GitHub](https://github.com/GusEpitech/cinescope).  
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BYV9w3tznF0" frameborder="0" allowfullscreen></iframe>

@@ -44,6 +44,6 @@ L'application contient les fonctionnalités suivantes :
 
 ### Aperçu
 
-Voici un aperçu du jeu et le repo du code [GitHub]()
+Voici un aperçu du jeu et le repo du code [GitHub](https://github.com/GusEpitech/luvio)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6Tv3PjVxCW8" frameborder="0" allowfullscreen></iframe>
