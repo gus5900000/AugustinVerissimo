@@ -1,6 +1,6 @@
 ---
 title: Luvio
-publishDate: 2025-02-11
+publishDate: 2025-02-11 12:00:00
 img: ./asset/project/stock-1.jpg
 img_alt: Interface de l'application de rencontre Luvio
 description: Application de rencontres moderne développée en PHP avec une architecture MVC, permettant aux utilisateurs de trouver l'amour basé sur leurs centres d'intérêts.
@@ -13,15 +13,15 @@ tags:
   - Epitech
 ---
 
-## Application de Rencontres Moderne
+## Luvio
 
 #### Description
 
-Luvio est une application de rencontres complète développée avec une architecture MVC en PHP. Elle permet aux utilisateurs de créer leur profil, de découvrir des personnes partageant les mêmes centres d'intérêt et d'interagir via un système de messagerie en temps réel. L'application offre une expérience utilisateur moderne et fluide grâce à son interface intuitive et ses animations soignées.
+Luvio est une application de rencontres moderne développée en PHP avec une architecture MVC. Elle permet aux utilisateurs de créer leur profil, de découvrir des personnes partageant les mêmes centres d'intérêt et d'interagir via un système de messagerie en temps réel. L'application offre une expérience utilisateur fluide et intuitive grâce à son interface soignée et ses animations.
 
 #### Conception
 
-Ce projet a été développé dans le cadre d'une formation en développement web. L'objectif était de créer une application de rencontres complète et sécurisée avec les fonctionnalités suivantes :
+Ce projet a été réalisé dans le cadre d'une formation en développement web. L'objectif était de créer une application de rencontres complète et sécurisée avec les fonctionnalités suivantes :
 - Système d'inscription et de connexion sécurisé
 - Interface de matching style Tinder
 - Messagerie en temps réel
@@ -33,64 +33,17 @@ La structure du projet suit une architecture MVC claire avec :
 - Des vues pour chaque fonctionnalité majeure
 - Des contrôleurs gérant la logique métier
 
-#### Fonctionnalités Principales
+#### Fonctionnalités
 
-L'application comprend plusieurs modules essentiels :
+L'application contient les fonctionnalités suivantes :
 
-- **Système de Matching**
-  - Interface de swipe intuitive
-  - Filtres de recherche (âge, localisation, centres d'intérêt)
-  - Notifications de match en temps réel
-  - Animations fluides
+- **Système de Matching** : Interface de swipe intuitive, filtres de recherche (âge, localisation, centres d'intérêt), notifications de match en temps réel, animations fluides.
+- **Gestion des Profils** : Création et édition de profil, upload de photos, gestion des centres d'intérêt, paramètres de confidentialité.
+- **Messagerie** : Chat en temps réel, liste des conversations, indicateurs de statut, historique des messages.
+- **Système de Recherche** : Filtres multicritères, géolocalisation, recommandations personnalisées, recherche par centres d'intérêt.
 
-- **Gestion des Profils**
-  - Création et édition de profil
-  - Upload de photos
-  - Gestion des centres d'intérêt
-  - Paramètres de confidentialité
+### Aperçu
 
-- **Messagerie**
-  - Chat en temps réel
-  - Liste des conversations
-  - Indicateurs de statut
-  - Historique des messages
-
-- **Système de Recherche**
-  - Filtres multicritères
-  - Géolocalisation
-  - Recommandations personnalisées
-  - Recherche par centres d'intérêt
-
-#### Technologies Utilisées
-
-- **Backend**
-  - PHP 8
-  - MySQL
-  - Architecture MVC
-  - PDO pour la base de données
-  - REST API pour les interactions
-
-- **Frontend**
-  - HTML5/CSS3
-  - JavaScript moderne
-  - Axios pour les requêtes AJAX
-  - Animations avec Anime.js
-  - Design responsive
-
-- **Sécurité**
-  - Hachage des mots de passe
-  - Protection contre les injections SQL
-  - Validation des données
-  - Gestion sécurisée des sessions
-
-### Infrastructure
-
-Le projet utilise une architecture moderne avec :
-- Base de données relationnelle MySQL
-- Variables d'environnement pour la configuration
-- System de migrations pour la base de données
-- Données de test générées avec Faker
-
-Le code source est organisé de manière modulaire avec une séparation claire des responsabilités, facilitant la maintenance et les évolutions futures.
+Voici un aperçu du jeu et le repo du code [GitHub](https://github.com/GusEpitech/luvio)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6Tv3PjVxCW8" frameborder="0" allowfullscreen></iframe>
