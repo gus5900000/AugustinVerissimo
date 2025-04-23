@@ -10,7 +10,6 @@ tags:
   - Python
 ---
 
-<!-- ![alt text](/assets/spaceinvader.gif) -->
 ## Space Invader
 
 #### Description
@@ -25,15 +24,13 @@ Ce projet a été réalisé en binôme. J'étais responsable du développement d
 
 L'application contient les fonctionnalités suivantes :
 
-- **Système de Collisions :** Gestion des collisions entre les tirs et les ennemis.
-- **Scoring :** Système de points basé sur la destruction des ennemis.
-- **Niveaux :** Progression à travers différents niveaux de difficulté.
-- **Déplacement des Tirs :** Contrôle précis des tirs des joueurs et des ennemis.
+- **Système de Collisions** : Gestion des collisions entre les tirs et les ennemis.
+- **Scoring** : Système de points basé sur la destruction des ennemis.
+- **Niveaux** : Progression à travers différents niveaux de difficulté.
+- **Déplacement des Tirs** : Contrôle précis des tirs des joueurs et des ennemis.
 
-#### Aperçu
-
-![Space Invader Gif](./asset/project/spaceinvader.gif)
-
-#### Code Source
+### Aperçu
 
 Le code source complet du projet est disponible sur [GitHub](https://github.com/gus5900000/Spaceinvader).
+
+![Space Invader](./asset/project/spaceinvader.gif)
