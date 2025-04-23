@@ -302,6 +302,7 @@ class MarkdownLoader {
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = new ProjectGallery();
   const projectFiles = [
+    './project/tweet_academie.md',
     './project/epigusto.md',
     './project/GusCSS.md',
     './project/luvio.md',
