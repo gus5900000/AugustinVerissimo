@@ -303,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const gallery = new ProjectGallery();
   const projectFiles = [
     './project/epigusto.md',
+    './project/GusCSS.md',
     './project/luvio.md',
     './project/cinescope.md',
     './project/ainao.md',
